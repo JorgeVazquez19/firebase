@@ -18,38 +18,49 @@
   </div>
 </section>-->
 
-<form action="action_page.php">
-  <div class="imgcontainer">
-    <img src="../../assets/logo.png" alt="Avatar" class="avatar">
+<section class="login-registro">
+
+  <div class="loginregisterclass"  v-show="!this.props_blIsLoggedIn">
+    <div class="imgcontainer">
+      <img src="../../assets/logo.png" alt="Avatar" class="avatar">
+    </div>
+
+    <div class="panelLogin" v-show="bLoginVisible">
+      <label for="uname"><b>Usuario</b></label>
+      <input type="text" placeholder="Enter Username" v-model="sLoginEmail" required>
+
+      <label for="psw"><b>Contraseña</b></label>
+      <input type="password" placeholder="Enter Password" v-model="sLoginPassword" required>
+
+      <button v-on:click="btnLogin">Login</button>
+      <button v-on:click="clickDeBotonRegistrarse">Registrar</button>
+      <label>
+        <input type="checkbox" checked="checked" name="remember"> Remember me
+      </label>
+      <button v-on:click="btnGoogle">Login con Google</button>
+      <button v-on:click="btnFacebook">Login con Facebook</button>
+      <button v-on:click="btnGithub">Login con Github</button>
+    </div>
+
+    <div class="panelRegister" v-show="!bLoginVisible">
+      <label for="uname"><b>Usuario</b></label>
+      <input type="text" placeholder="Enter Username" v-model="sEmailRegister" required>
+
+      <label for="psw"><b>Contraseña</b></label>
+      <input type="password" placeholder="Enter Password" v-model="sPasswordRegister" required>
+
+      <button v-on:click="btnResgistrarse">Registrarse</button>
+      <button v-on:click="btnCancelar">Cancelar</button>
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <span class="psw">Forgot <a href="#">password?</a></span>
+    </div>
+
   </div>
 
-  <div class="panelLogin" v-show="bLoginVisible">
-    <label for="uname"><b>Usuario</b></label>
-    <input type="text" placeholder="Enter Username" v-model="sLoginEmail" required>
-
-    <label for="psw"><b>Contraseña</b></label>
-    <input type="password" placeholder="Enter Password" v-model="sLoginPassword" required>
-
-    <button v-on:click="btnLogin">Login</button>
-    <button v-on:click="clickDeBotonRegistrarse">Registrar</button>
-    <label>
-      <input type="checkbox" checked="checked" name="remember"> Remember me
-    </label>
+  <div class="logged" v-show="this.props_blIsLoggedIn">
+      <button v-on:click="logout">logout</button>
   </div>
-
-  <div class="panelRegister" v-show="!bLoginVisible">
-    <label for="uname"><b>Usuario</b></label>
-    <input type="text" placeholder="Enter Username" v-model="sEmailRegister" required>
-
-    <label for="psw"><b>Contraseña</b></label>
-    <input type="password" placeholder="Enter Password" v-model="sPasswordRegister" required>
-
-    <button v-on:click="btnResgistrarse">Registrarse</button>
-    <button v-on:click="btnCancelar">Cancelar</button>
-  </div>
-
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Forgot <a href="#">password?</a></span>
-  </div>
-</form>
+</section>
